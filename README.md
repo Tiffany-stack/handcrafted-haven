@@ -1,7 +1,7 @@
 # Handcrafted Haven
 
 ## Team Members:
- -Tiffany Nocos-Takudzwa Mutamburigwa
+ -Tiffany Nocos-Takudzwa Mutamburigwa-Ntombesizwe Hontyo
 
 ## Project Overview:
 Handcrafted Haven is a web application that provides a platform for artisans and crafters to showcase and sell their unique handcrafted items. It fosters community, promotes sustainability, and supports small businesses.
