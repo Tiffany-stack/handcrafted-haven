@@ -24,7 +24,7 @@ export default function NavBar() {
                 <div className='flex items-center'>
                     {/* Left Logo */}
                     <Link href={'/'}>
-                        <div className=" text-2xl font-bold mr-10">HFH</div>
+                    <img src="/favicon.ico" alt="Logo" className="h-10 w-10 mr-10" />
                     </Link>
 
                     <div className="border-transparent px-6"></div>

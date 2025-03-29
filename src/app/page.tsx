@@ -57,7 +57,7 @@ const Page = () => {
           <p className="text-xl mb-8">A digital marketplace for unique, handmade treasures crafted by talented artisans.</p>
           <a
             href="#explore"
-            className="bg-yellow-500 hover:bg-yellow-600 text-gray-800 py-3 px-6 rounded-full font-semibold"
+            className="bg-yellow-500 hover:bg-yellow-600 text-gray-800 py-4 px-8 rounded-lg font-semibold shadow-md"
           >
             Explore Now
           </a>
@@ -66,9 +66,18 @@ const Page = () => {
 
       {/* About Section */}
       <section id="explore" className="py-16 px-6 text-center bg-white text-black">
-        <h2 className="text-3xl font-bold mb-6">What is Handcrafted Haven?</h2>
+        <h2 className="text-3xl font-bold mb-6">Discover Handcrafted Haven</h2>
         <p className="text-lg max-w-3xl mx-auto mb-8">
-          Handcrafted Haven is an innovative web application designed to connect artisans and crafters with customers who value the beauty and uniqueness of handmade items. Our platform offers a virtual marketplace where creators can showcase and sell their works, fostering a community of passionate makers and conscious consumers.
+        Handcrafted Haven is a unique online platform that bridges the gap between artisans and buyers who appreciate the charm of handmade creations. It serves as a digital marketplace where talented crafters can display and sell their work, building a community of passionate creators and mindful shoppers.
+
+
+
+
+
+
+
+
+
         </p>
         <a
           href="#features"
@@ -83,15 +92,15 @@ const Page = () => {
         <h2 className="text-3xl font-bold mb-6">Features</h2>
         <div className="grid md:grid-cols-3 gap-12">
           <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-3">Showcase Your Art</h3>
+            <h3 className="text-xl font-semibold mb-3">Showcase </h3>
             <p>Artisans can create detailed profiles and display their handmade items for a global audience.</p>
           </div>
           <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-3">Secure E-commerce</h3>
+            <h3 className="text-xl font-semibold mb-3">Secure </h3>
             <p>Our platform provides secure and easy-to-use payment solutions to support your sales.</p>
           </div>
           <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold mb-3">Foster a Community</h3>
+            <h3 className="text-xl font-semibold mb-3">Foster </h3>
             <p>Join a community of like-minded individuals passionate about handmade creations and sustainability.</p>
           </div>
         </div>
@@ -105,7 +114,7 @@ const Page = () => {
         <p className="text-lg mb-8">Whether you're a creator or a shopper, Handcrafted Haven connects you to a world of unique, handmade treasures.</p>
         <a
           href="/signup"
-          className="bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-6 rounded-full font-semibold"
+          className="bg-yellow-500 hover:bg-yellow-600 text-black py-4 px-8 rounded-lg font-semibold shadow-md"
         >
           Get Started Today
         </a>

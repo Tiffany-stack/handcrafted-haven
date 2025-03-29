@@ -19,7 +19,10 @@ export const metadata: Metadata = {
     default: 'Hand Crafted Haven',
   },
   description: '',
-  metadataBase: new URL('https://team03-handcraftedhaven.vercel.app'),
+  metadataBase: new URL('https://handcrafted-haven-1r2r.vercel.app'),
+  icons: {
+    icon: "/favicon.ico", // Ensure favicon is in the `public/` folder
+  },
 };
 
 export default function RootLayout({
