@@ -15,6 +15,7 @@ export default function NavBar() {
         { name: "Home", href: "/" },
         { name: "Contacts", href: "/contacts" },
         { name: "Members", href: "/members" },
+        { name: "Products", href: "/products" }, // added products sunday
     ];
 
     return (
