@@ -1,20 +1,25 @@
 "use client";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { Dispatch, SetStateAction, useActionState, useState } from "react";
-import { login } from "../actions/auth";
+import { signup } from "../actions/auth";
 
-
-interface LoginFormProps {
+interface CreateAccountFormProps {
   readonly setIsLogin: Dispatch<SetStateAction<boolean>>;
 }
 
-export function LoginForm({ setIsLogin }: LoginFormProps) {
-  const [state, action, pending] = useActionState(login, undefined)
+export function CreateAccountForm({ setIsLogin }: CreateAccountFormProps) {
+  const [state, action, pending] = useActionState(signup, undefined)
+  const [focusFname, setFocusFname] = useState(false);
+  const [focusLname, setFocusLname] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusPassword, setFocusPassword] = useState(false);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (event.target.name === "email") {
+    if (event.target.name === "fname") {
+      setFocusFname(true);
+    } else if (event.target.name === "lname") {
+      setFocusLname(true);
+    } else if (event.target.name === "email") {
       setFocusEmail(true);
     } else if (event.target.name === "password") {
       setFocusPassword(true);
@@ -22,7 +27,11 @@ export function LoginForm({ setIsLogin }: LoginFormProps) {
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (event.target.name === "email") {
+    if (event.target.name === "fname") {
+      setFocusFname(false);
+    } else if (event.target.name === "lname") {
+      setFocusLname(false);
+    } else if (event.target.name === "email") {
       setFocusEmail(false);
     } else if (event.target.name === "password") {
       setFocusPassword(false);
@@ -37,8 +46,40 @@ export function LoginForm({ setIsLogin }: LoginFormProps) {
 
   return (
     <form action={action} className="bg-white rounded-b-lg shadow-lg p-6 space-y-6">
-      <h2 className="text-xl font-bold text-center text-gray-800">Login</h2>
-      
+      <h2 className="text-xl font-bold text-center text-gray-800">Create Account</h2>
+
+      {/* Fisrt Name Input */}
+      <div className={`relative flex items-center border border-gray-300 gap-2 bg-white rounded-md ${focusFname ? "ring-2 ring-blue-500" : ""}`}>
+        <div className="flex items-center justify-center pl-4">
+          <FaUser className="text-gray-400" />
+        </div>
+        <input
+          type="text"
+          name="fname"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          className="w-full py-3 pr-2 border-none rounded-md text-gray-800 focus:outline-none bg-white placeholder-gray-500"
+          placeholder="First Name"
+        />
+      </div>
+      {state?.errors?.fname && <p className="text-red-500 text-sm mt-2">{state.errors.fname}</p>}
+
+      {/* Name Input */}
+      <div className={`relative flex items-center border border-gray-300 gap-2 bg-white rounded-md ${focusLname ? "ring-2 ring-blue-500" : ""}`}>
+        <div className="flex items-center justify-center pl-4">
+          <FaUser className="text-gray-400" />
+        </div>
+        <input
+          type="text"
+          name="lname"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          className="w-full py-3 pr-2 border-none rounded-md text-gray-800 focus:outline-none bg-white placeholder-gray-500"
+          placeholder="Last Name"
+        />
+      </div>
+      {state?.errors?.lname && <p className="text-red-500 text-sm mt-2">{state.errors.lname}</p>}
+
       {/* Email Input */}
       <div className={`relative flex items-center border border-gray-300 gap-2 bg-white rounded-md ${focusEmail ? "ring-2 ring-blue-500" : ""}`}>
         <div className="flex items-center justify-center pl-4">
@@ -73,37 +114,29 @@ export function LoginForm({ setIsLogin }: LoginFormProps) {
         <div>
           <p className="text-red-500 text-sm mt-2 font-semibold">Password must:</p>
           <ul>
-            {state.errors.password.map((error) => (
+            {state.errors.password.map((error: string) => (
               <li key={error} className="text-red-500 text-sm mt-2">- {error}</li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* Remember Me & Forgot Password */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <input type="checkbox" id="remember" className="h-4 w-4" />
-          <label htmlFor="remember" className="text-sm text-black ml-2">Remember me</label>
-        </div>
-        {/* <a href="/" className="text-sm text-blue-500 hover:underline">Forgot password?</a> */}
-      </div>
-
       {/* Submit Button */}
-      <button disabled={ pending } type="submit" className="w-full py-3 bg-yellow-500 text-white rounded-md font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign in</button>
-      {/* Toggle to Create Account */}
+      <button disabled={pending} type="submit" className="w-full py-3 bg-yellow-500 text-white rounded-md font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Create Account</button>
+
+      {/* Toggle to Login */}
       <p className="text-center text-sm text-gray-800">
-        <span>Don't have an account?</span>
-          <button
+        <span>Already have an account?</span>
+        <button
             type="button"
             onClick={(e) => {
-              handleClearFields(e); // Clear the fields
-              setIsLogin(false);   // Set the state
+              handleClearFields(e);
+              setIsLogin(true);
             }}
             className="text-blue-500 hover:underline ml-1"
-          >
-            Create an account
-          </button>
+        >
+          Sign in
+        </button>
       </p>
     </form>
   );

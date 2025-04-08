@@ -1,4 +1,6 @@
 {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+import 'server-only';
+
 import { NextResponse } from 'next/server';
 import postgres from 'postgres';
 

@@ -8,7 +8,11 @@ import NavBar from "../ui/navegation/nav-bar";
 
 export const experimental_ppr = true;
  
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+    children,
+  }: {
+    children: React.ReactNode;
+  }) {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
