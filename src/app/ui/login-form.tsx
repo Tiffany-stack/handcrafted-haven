@@ -93,7 +93,7 @@ export function LoginForm({ setIsLogin }: LoginFormProps) {
       <button disabled={ pending } type="submit" className="w-full py-3 bg-yellow-500 text-white rounded-md font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign in</button>
       {/* Toggle to Create Account */}
       <p className="text-center text-sm text-gray-800">
-        <span>Don't have an account?</span>
+        <span>Don&apos;t have an account?</span>
           <button
             type="button"
             onClick={(e) => {

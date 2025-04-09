@@ -27,7 +27,8 @@ export async function decrypt(session: string | undefined = '') {
     })
     return payload
   } catch (error) {
-    console.log('Failed to verify session')
+    // Change made here: Log the actual error for better debugging
+    console.error('Failed to verify session:', error)  // Changed from console.log to console.error
   }
 }
 
@@ -73,7 +74,7 @@ export async function deleteSession() {
     cookieStore.delete('session')
 }
 
-//exapmle Then you can reuse the deleteSession() function in your application
+// Example: You can reuse the deleteSession() function in your application
 /* 
 export async function logout() {
   deleteSession()

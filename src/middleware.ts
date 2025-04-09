@@ -3,14 +3,14 @@ import { decrypt } from '@/app/lib/session';
 
 // 1. Specify protected and public routes
 const protectedRoutes = ['ui/navegation', 'ui/navegation/product-management'];
-const publicRoutes = [ '/login', '/signup', '/'];
+// const publicRoutes = [ '/login', '/signup', '/'];
 
 // Middleware function
 export default async function middleware(req: NextRequest) {
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
-  //const isPublicRoute = publicRoutes.includes(path);
+  // const isPublicRoute = publicRoutes.includes(path);
 
   // 3. Get the session cookie from the request
   const cookie = req.cookies.get('session')?.value; // ✅ Use req.cookies instead of cookies()
@@ -25,11 +25,12 @@ export default async function middleware(req: NextRequest) {
   /* if (
     isPublicRoute &&
     session?.userId &&
-    !req.nextUrl.pathname.startsWith('ui/navigation')
+    !req.nextUrl.pathname.startsWith('ui/navegation')
   ) {
-    return NextResponse.redirect(new URL('ui/navigation', req.nextUrl));
+    return NextResponse.redirect(new URL('ui/navegation', req.nextUrl));
   }
- */
+  */
+
   return NextResponse.next();
 }
 
