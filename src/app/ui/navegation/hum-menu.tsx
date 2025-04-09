@@ -13,7 +13,6 @@ export default function HumMenu() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const [isUser, setIsUser] = useState(false);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(false);  // Modified: Set initial state to false
   const [error, setError] = useState<string | null>(null); // Modified: Changed from 'any' to 'string | null'
   const router = useRouter();
 
@@ -32,8 +31,6 @@ export default function HumMenu() {
       } catch (err) {
         setIsUser(false);
         setError(err instanceof Error ? err.message : "An unknown error occurred");
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -50,8 +47,6 @@ export default function HumMenu() {
 
   async function handleLogout() {
     try {
-      setLoading(true); // Indicate loading state
-
       const res = await fetch('/api/users/', { method: 'DELETE' });
 
       if (!res.ok) throw new Error("Failed to logout");
@@ -64,8 +59,6 @@ export default function HumMenu() {
       router.push('/login');
     } catch (err) {
       setError(err instanceof Error ? err.message : "An unknown error occurred");
-    } finally {
-      setLoading(false); // Stop loading state
     }
   }
 
