@@ -1,8 +1,8 @@
-// src/app/products/product-management/page.tsx
+// src/app/ui/navegation/products/page.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Filter, FilterByPrice } from '../products/filter'; // comment
+import { Filter, FilterByPrice } from '../products/filter';
 
 // Define types for product and product images 
 type ProductImage = {
@@ -30,39 +30,18 @@ const ProductManagementPage = () => {
   const [filterIdValue, updateCategoryIdFilter] = useState(0);
 
   const filteredProductList = products.filter((product) => {
-    if(filterIdValue == 1000) {
-      return product.category_id == 1000
-    } 
-    else if (filterIdValue == 2000) {
-      return product.category_id == 2000
-    }
-    else if (filterIdValue == 3000) {
-      return product.category_id == 3000
-    }
-    else if (filterIdValue == 4000) {
-      return product.category_id == 4000
-    }
-    else if (filterIdValue == 5000) {
-      return product.category_id == 5000
-    }
-    else if(filterIdValue == 100) {
-      return product.price <= 20
-    } 
-    else if (filterIdValue == 200) {
-      return product.price <= 50
-    }
-    else if (filterIdValue == 300) {
-      return product.price <= 100
-    }
-    else if (filterIdValue == 400) {
-      return product.price > 100
-    }
-    else {
-      return product
-    }
+    if (filterIdValue === 1000) return product.category_id === 1000;
+    if (filterIdValue === 2000) return product.category_id === 2000;
+    if (filterIdValue === 3000) return product.category_id === 3000;
+    if (filterIdValue === 4000) return product.category_id === 4000;
+    if (filterIdValue === 5000) return product.category_id === 5000;
+    if (filterIdValue === 100) return product.price <= 20;
+    if (filterIdValue === 200) return product.price <= 50;
+    if (filterIdValue === 300) return product.price <= 100;
+    if (filterIdValue === 400) return product.price > 100;
+    return true;
   });
 
-  // Fetch products from the backend (adjust the URL as needed)
   const fetchProducts = async () => {
     const res = await fetch('/api/products');
     const data = await res.json();
@@ -74,21 +53,21 @@ const ProductManagementPage = () => {
   };
 
   useEffect(() => {
-    fetchProducts(); // Fetch products when the component mounts
+    fetchProducts();
   }, []);
 
   useEffect(() => {
     if (products.length > 0) {
       const productsWithRatings = products.map((product) => ({
         ...product,
-        rating: generateRandomRating(), //assign random rating
+        rating: generateRandomRating(),
       }));
-      setProducts(productsWithRatings); //update product with random rating
+      setProducts(productsWithRatings);
     }
   }, [products.length]);
 
-  function onFilterValueSelected(filterValue: any) {
-    updateCategoryIdFilter(filterValue)
+  function onFilterValueSelected(filterValue: number) {
+    updateCategoryIdFilter(filterValue);
   }
 
   return (
@@ -98,14 +77,14 @@ const ProductManagementPage = () => {
         <div className="flex">
           <div className="bg-blue-500 text-white mr-12 p-3 rounded-lg">
             <h3>Filter by Category</h3>
-            <Filter filterValueSelected={onFilterValueSelected}></Filter>
+            <Filter filterValueSelected={onFilterValueSelected} />
           </div>
           <div className="bg-blue-500 text-white p-3 rounded-lg">
             <h3>Filter by Price</h3>
-            <FilterByPrice filterValueSelected={onFilterValueSelected}></FilterByPrice>
+            <FilterByPrice filterValueSelected={onFilterValueSelected} />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
           {filteredProductList.map((product) => (
             <div key={product.id} className="bg-white p-6 shadow-lg rounded-lg">
               <div className="flex flex-col items-center text-center mb-4">
@@ -115,13 +94,11 @@ const ProductManagementPage = () => {
                 <p className="text-lg font-semibold text-blue-500">
                   Price: ${Number(product.price).toFixed(2)}
                 </p>
-
                 {product.rating && (
                   <p className="text-lg font-semibold text-yellow-500">Rating: {product.rating} / 5</p>
                 )}
               </div>
               <div className="mt-4">
-                {/* Display all product images */}
                 {(product.images || []).map((image) => (
                   <img
                     key={image.id}
@@ -132,7 +109,6 @@ const ProductManagementPage = () => {
                 ))}
               </div>
               <div className="mt-4">
-                {/* Change button text to 'Add to Cart' */}
                 <button className="w-full py-2 bg-blue-500 text-white rounded-lg">
                   Add to Cart
                 </button>
