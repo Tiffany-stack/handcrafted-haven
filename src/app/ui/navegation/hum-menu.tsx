@@ -39,7 +39,7 @@ export default function HumMenu() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Members", href: "/members" },
+    { name: "Members", href: "/navegation/members" },
     { name: "Products", href: "/navegation/products" },
     { name: "Contacts", href: "/contacts" },
     ...(isUser ? [{ name: "Product Management", href: "/navegation/product-management" }] : []),
