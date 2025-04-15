@@ -1,5 +1,5 @@
 'use client';
-
+// added some comments
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaStar } from 'react-icons/fa';
