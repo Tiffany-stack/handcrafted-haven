@@ -42,7 +42,7 @@ const MemberPage = () => {
             <div key={profile.id}>
               <div>
                 <Image
-                  src={images[image].imagesrc}
+                  src={images[image % images.length]?.imagesrc || "/images/default-profile.jpg"} // addedon tuesday
                   alt="Person"
                   width={100}
                   height={80}
